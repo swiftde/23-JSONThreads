@@ -33,7 +33,7 @@ class MasterViewController: UITableViewController {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
                 var errorV: NSError?
                 self.daten = (NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments, error: &errorV) as NSDictionary)["results"] as NSMutableArray
-                if errorV {
+                if errorV != nil {
                     println(errorV!.localizedDescription)
                     return
                 }
@@ -64,7 +64,7 @@ class MasterViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as UITableViewCell
         
         cell.textLabel.text = (daten[indexPath.row] as NSDictionary)["trackName"] as String
-        if images["\(indexPath.row)"] {
+        if images["\(indexPath.row)"] != nil {
             cell.imageView.image = images["\(indexPath.row)"]!
             cell.imageView.layer.cornerRadius = 10
             cell.imageView.clipsToBounds = true
