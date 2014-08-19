@@ -25,7 +25,7 @@ class MasterViewController: UITableViewController {
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: {
             response, data, error in
             
-            if error {
+            if error != nil {
                 println(error!.localizedDescription)
                 return
             }
