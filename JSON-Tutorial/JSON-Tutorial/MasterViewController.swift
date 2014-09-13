@@ -52,33 +52,33 @@ class MasterViewController: UITableViewController {
         
     }
     
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return daten.count
     }
     
-    override func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 60
     }
     
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as UITableViewCell
         
-        cell.textLabel.text = (daten[indexPath.row] as NSDictionary)["trackName"] as String
+        cell.textLabel?.text = (daten[indexPath.row] as NSDictionary)["trackName"] as? String
         if images["\(indexPath.row)"] != nil {
-            cell.imageView.image = images["\(indexPath.row)"]!
-            cell.imageView.layer.cornerRadius = 10
-            cell.imageView.clipsToBounds = true
+            cell.imageView?.image = images["\(indexPath.row)"]!
+            cell.imageView?.layer.cornerRadius = 10
+            cell.imageView?.clipsToBounds = true
         }
         let version = (daten[indexPath.row] as NSDictionary)["version"] as String
         let preis = (daten[indexPath.row] as NSDictionary)["price"] as Double
         
-        cell.detailTextLabel.text = "Version: \(version) Preis: \(preis)€"
+        cell.detailTextLabel?.text = "Version: \(version) Preis: \(preis)€"
         
         
         return cell
     }
     
-    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let url = (daten[indexPath.row] as NSDictionary)["trackViewUrl"] as String
         let alert = UIAlertController(title: "App Store", message: "Wollen Sie wirklich den App Store öffnen?", preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "Nein", style: .Cancel, handler: nil))
