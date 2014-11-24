@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0600"
+   LastUpgradeVersion = "0610"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -17,6 +17,20 @@
                BlueprintIdentifier = "E09A8D9519890AB500482445"
                BuildableName = "JSON-Tutorial.app"
                BlueprintName = "JSON-Tutorial"
+               ReferencedContainer = "container:JSON-Tutorial.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E09A8DA919890AB500482445"
+               BuildableName = "JSON-TutorialTests.xctest"
+               BlueprintName = "JSON-TutorialTests"
                ReferencedContainer = "container:JSON-Tutorial.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

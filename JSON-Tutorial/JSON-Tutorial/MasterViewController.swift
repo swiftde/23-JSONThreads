@@ -21,7 +21,7 @@ class MasterViewController: UITableViewController {
         super.viewDidLoad()
         title = "Facebook"
         
-        let request = NSURLRequest(URL: NSURL(string: kURL))
+        let request = NSURLRequest(URL: NSURL(string: kURL)!)
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: {
             response, data, error in
             
@@ -39,7 +39,7 @@ class MasterViewController: UITableViewController {
                 }
                 for dic in self.daten {
                     let url = dic["artworkUrl60"] as String
-                    let data = NSData(contentsOfURL: NSURL(string: url))
+                    let data = NSData(contentsOfURL: NSURL(string: url)!)!
                     let image = UIImage(data: data)
                     self.images["\(self.daten.indexOfObject(dic))"] = image
                 }
@@ -63,11 +63,11 @@ class MasterViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as UITableViewCell
         
-        cell.textLabel?.text = (daten[indexPath.row] as NSDictionary)["trackName"] as? String
+        cell.textLabel.text = (daten[indexPath.row] as NSDictionary)["trackName"] as? String
         if images["\(indexPath.row)"] != nil {
-            cell.imageView?.image = images["\(indexPath.row)"]!
-            cell.imageView?.layer.cornerRadius = 10
-            cell.imageView?.clipsToBounds = true
+            cell.imageView.image = images["\(indexPath.row)"]!
+            cell.imageView.layer.cornerRadius = 10
+            cell.imageView.clipsToBounds = true
         }
         let version = (daten[indexPath.row] as NSDictionary)["version"] as String
         let preis = (daten[indexPath.row] as NSDictionary)["price"] as Double
@@ -85,7 +85,7 @@ class MasterViewController: UITableViewController {
         alert.addAction(UIAlertAction(title: "Ja", style: .Default, handler: {
             action in
             
-            UIApplication.sharedApplication().openURL(NSURL(string: url))
+            UIApplication.sharedApplication().openURL(NSURL(string: url)!)
             return
             }))
         presentViewController(alert, animated: true, completion: nil)
